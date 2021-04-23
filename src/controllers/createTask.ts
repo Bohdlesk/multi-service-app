@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { Request, Response } from 'express';
 import { TaskModel } from '../models/tasks/tasks.model';
 
@@ -5,7 +6,7 @@ export default async (req: Request, res: Response): Promise<void> => {
   try {
     const task = await TaskModel.create({
       ...req.body,
-      _idSystemUser: '6082ae5eb66a8b44eca1c3f7',
+      _idSystemUser: req.headers._idSystemUser,
     });
     res.status(200).json({
       task,

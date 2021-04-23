@@ -6,9 +6,15 @@ export default async (req: Request, res: Response): Promise<void> => {
   try {
     // DELETE params: _id
     const isDeleted = await TaskModel.deleteOne({ _id: req.params._id });
-    res.status(200).json({
-      isDeleted,
-    });
+    if (isDeleted.n) {
+      res.status(200).json({
+        status: 'Ok',
+      });
+    } else {
+      res.status(500).json({
+        status: 'Not Found',
+      });
+    }
   } catch (error) {
     res.status(404).json({
       message: error.message,

@@ -4,7 +4,6 @@ import { TaskModel } from '../models/tasks/tasks.model';
 
 export default async (req: Request, res: Response): Promise<void> => {
   try {
-    // GET params: _id
     const task = await TaskModel.findOne({ _id: req.params._id });
     res.status(200).json({
       task,
