@@ -29,4 +29,13 @@ appService3.use(express.json());
 
 appService0.use('/', balancerMiddleware);
 
-export { app };
+appService1.use('/auth', authRouter);
+appService1.post('/users', createUser);
+
+appService2.use('/', accessChecker);
+appService3.use('/', accessChecker);
+
+appService2.use('/', APIV1Router);
+appService3.use('/', APIV1Router);
+
+connect();
