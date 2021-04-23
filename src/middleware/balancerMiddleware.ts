@@ -8,7 +8,7 @@ function getRandom(): number {
 
 export default async (req: Request, res:Response): Promise<void > => {
   const port = getRandom(); // 8083 or 8082
-  const redirectUrl = `http://localhost:${port}/tasks`;
+  const redirectUrl = `http://localhost:${port}${req.url}`;
   console.log(`balanced to ${port}`);
 
   let method: Method = 'GET';
