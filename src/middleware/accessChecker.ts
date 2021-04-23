@@ -10,6 +10,7 @@ export default async (req: Request, res:Response, next: NextFunction): Promise<v
     if (token) {
       console.log('access passed');
       req.headers._idSystemUser = token._idSystemUser;
+      req.headers.systemFunctionIds = token.systemFunctionIds;
       next();
     } else {
       console.log('access failed');
