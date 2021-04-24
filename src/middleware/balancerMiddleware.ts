@@ -18,7 +18,7 @@ export default async (req: Request, res:Response): Promise<void > => {
   else if (req.method === 'PUT') method = 'PUT';
 
   axios({
-    method, url: redirectUrl, params: req.query, headers: req.headers, data: req.body,
+    method, url: redirectUrl, headers: req.headers, data: req.body,
   })
     .then((result) => {
       res.status(200).send(result.data);
