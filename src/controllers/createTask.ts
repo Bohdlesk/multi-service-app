@@ -14,7 +14,7 @@ export default async (req: Request, res: Response): Promise<void> => {
       });
     } else {
       res.status(401).json({
-        message: 'Failed to authorize',
+        message: 'System function is not allowed',
       });
     }
   } catch (error) {

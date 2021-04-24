@@ -11,7 +11,7 @@ export default async (req: Request, res: Response): Promise<void> => {
       });
     } else {
       res.status(500).json({
-        status: 'Not Found',
+        status: 'System function is not allowed',
       });
     }
   } catch (error) {
