@@ -1,9 +1,8 @@
 import mongoose from 'mongoose';
-import exp from 'constants';
 
 let database: mongoose.Connection;
 
-export const connect = () => {
+export const connect = (): void => {
   const uri = 'mongodb://localhost:27017/test';
   if (database) {
     return;
@@ -17,14 +16,14 @@ export const connect = () => {
 
   database = mongoose.connection;
 
-  database.once('open', async () => {
+  database.once('open', async (): Promise<void > => {
     console.log('Connected to database');
   });
-  database.on('error', () => {
+  database.on('error', (): void => {
     console.log('Error connecting to database');
   });
 };
-export const disconnect = () => {
+export const disconnect = (): void => {
   if (!database) {
     return;
   }
