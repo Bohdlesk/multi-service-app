@@ -15,6 +15,7 @@ import accessChecker from './middleware/accessChecker';
 
 import { authRouter } from './routers/auth';
 import balancerMiddleware from './middleware/balancerMiddleware';
+import * as validators from './middleware/validator';
 import { createUser } from './controllers';
 
 export const appService0 = express();
@@ -30,7 +31,7 @@ appService3.use(express.json());
 appService0.use('/', balancerMiddleware);
 
 appService1.use('/auth', authRouter);
-appService1.post('/users', createUser);
+appService1.post('/users', validators.createUser, createUser);
 
 appService2.use('/', accessChecker);
 appService3.use('/', accessChecker);
