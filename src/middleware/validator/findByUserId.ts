@@ -4,7 +4,7 @@ import makeValidationResponse from '../../makeValidationResponse';
 
 export default (req: Request, res: Response, next: NextFunction): void => {
   const querySchema = Joi.object({
-    _idUser: Joi.string().required(),
+    _id: Joi.string().required(),
   });
 
   const { error: queryErrors } = querySchema.validate(req.query);
